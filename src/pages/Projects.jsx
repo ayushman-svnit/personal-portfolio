@@ -80,7 +80,7 @@ const Projects = () => {
       ],
       tech: ["React.js", "Framer Motion", "CSS3"],
       github: "https://github.com/ayushman-svnit/personal-portfolio",
-      demo: "#",
+      demo: "https://ayushman-singh.netlify.app/",
       status: "Active",
       icon: <Globe />,
     },
