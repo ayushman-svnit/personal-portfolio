@@ -7,12 +7,14 @@ import Education from "./pages/Education";
 import Skills from "./pages/Skills";
 import Footer from "./components/Footer";
 import ParticleBackground from "./components/ParticleBackground";
+import ScrollToTop from "./components/ScrollToTop";
 import "./App.css";
 
 function App() {
   return (
     <Router>
       <div className="app">
+        <ScrollToTop />
         <ParticleBackground />
         <Navbar />
         <Routes>
