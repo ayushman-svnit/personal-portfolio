@@ -150,10 +150,10 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="copyright">
             <p>© {currentYear} Ayushman Singh. All rights reserved.</p>
-            <p className="made-with">
+            {/* <p className="made-with">
               Made with <Heart className="heart-icon" /> and{" "}
               <Coffee className="coffee-icon" />
-            </p>
+            </p> */}
           </div>
 
           <div className="footer-actions">
