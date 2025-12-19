@@ -10,7 +10,7 @@ import {
   GraduationCap,
   UserCog,
   FileText, // Resume icon
-  Download // Download icon
+  Download, // Download icon
 } from "lucide-react";
 
 const Navbar = () => {
@@ -32,18 +32,16 @@ const Navbar = () => {
 
   const handleNavigation = (path) => {
     if (location.pathname === path) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       navigate(path);
     }
     setIsOpen(false);
   };
 
-  // Function to handle resume download
   const handleResumeDownload = () => {
-    // Replace this URL with your actual resume file URL
-    const resumeUrl = "/resume.pdf"; // Or link to your resume
-    const link = document.createElement('a');
+    const resumeUrl = "resume.pdf";
+    const link = document.createElement("a");
     link.href = resumeUrl;
     link.download = "Ayushman_Singh_Resume.pdf";
     document.body.appendChild(link);
@@ -51,7 +49,6 @@ const Navbar = () => {
     document.body.removeChild(link);
     setIsOpen(false);
   };
-
   return (
     <motion.nav
       className="navbar"
@@ -65,10 +62,7 @@ const Navbar = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <button 
-            onClick={() => handleNavigation("/")}
-            className="logo-link"
-          >
+          <button onClick={() => handleNavigation("/")} className="logo-link">
             <span className="logo-text">AYUSHMAN</span>
             <span className="logo-gold">SINGH</span>
           </button>
@@ -79,7 +73,9 @@ const Navbar = () => {
             <button
               key={item.path}
               onClick={() => handleNavigation(item.path)}
-              className={`nav-link ${location.pathname === item.path ? "active" : ""}`}
+              className={`nav-link ${
+                location.pathname === item.path ? "active" : ""
+              }`}
             >
               <motion.div
                 whileHover={{ scale: 1.1 }}
@@ -92,7 +88,7 @@ const Navbar = () => {
               <div className="nav-indicator" />
             </button>
           ))}
-          
+
           {/* Resume Button - Always visible in gold */}
           <motion.button
             onClick={handleResumeDownload}
@@ -124,13 +120,15 @@ const Navbar = () => {
               <button
                 key={item.path}
                 onClick={() => handleNavigation(item.path)}
-                className={`mobile-nav-link ${location.pathname === item.path ? "active" : ""}`}
+                className={`mobile-nav-link ${
+                  location.pathname === item.path ? "active" : ""
+                }`}
               >
                 {item.icon}
                 <span>{item.label}</span>
               </button>
             ))}
-            
+
             {/* Mobile Resume Button */}
             <button
               onClick={handleResumeDownload}
