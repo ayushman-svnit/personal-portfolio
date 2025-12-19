@@ -9,6 +9,8 @@ import {
   Briefcase,
   GraduationCap,
   UserCog,
+  FileText, // Resume icon
+  Download // Download icon
 } from "lucide-react";
 
 const Navbar = () => {
@@ -29,15 +31,25 @@ const Navbar = () => {
   ];
 
   const handleNavigation = (path) => {
-    // If already on the page, scroll to top
     if (location.pathname === path) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      // Navigate to new page
       navigate(path);
-      // Scroll will be handled by ScrollToTop component
     }
-    setIsOpen(false); // Close mobile menu
+    setIsOpen(false);
+  };
+
+  // Function to handle resume download
+  const handleResumeDownload = () => {
+    // Replace this URL with your actual resume file URL
+    const resumeUrl = "/resume.pdf"; // Or link to your resume
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.download = "Ayushman_Singh_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setIsOpen(false);
   };
 
   return (
@@ -80,6 +92,21 @@ const Navbar = () => {
               <div className="nav-indicator" />
             </button>
           ))}
+          
+          {/* Resume Button - Always visible in gold */}
+          <motion.button
+            onClick={handleResumeDownload}
+            className="nav-link resume-link"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <motion.div className="nav-item-content">
+              <FileText size={18} />
+              <span>Resume</span>
+              <Download size={14} className="download-icon" />
+            </motion.div>
+            <div className="nav-indicator" />
+          </motion.button>
         </div>
 
         <button className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>
@@ -103,6 +130,16 @@ const Navbar = () => {
                 <span>{item.label}</span>
               </button>
             ))}
+            
+            {/* Mobile Resume Button */}
+            <button
+              onClick={handleResumeDownload}
+              className="mobile-nav-link resume-mobile-link"
+            >
+              <FileText size={18} />
+              <span>Resume</span>
+              <Download size={14} className="download-icon" />
+            </button>
           </motion.div>
         )}
       </div>
@@ -111,106 +148,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
-// import React, { useState } from "react";
-// import { motion } from "framer-motion";
-// import { NavLink } from "react-router-dom";
-// import {
-//   Menu,
-//   X,
-//   Home,
-//   FolderKanban,
-//   Briefcase,
-//   GraduationCap,
-//   UserCog,
-// } from "lucide-react";
-
-// const Navbar = () => {
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   const navItems = [
-//     { path: "/", label: "Home", icon: <Home size={18} /> },
-//     { path: "/projects", label: "Projects", icon: <FolderKanban size={18} /> },
-//     { path: "/experience", label: "Experience", icon: <Briefcase size={18} /> },
-//     {
-//       path: "/education",
-//       label: "Education",
-//       icon: <GraduationCap size={18} />,
-//     },
-//     { path: "/skills", label: "Skills", icon: <UserCog size={18} /> },
-//   ];
-
-//   return (
-//     <motion.nav
-//       className="navbar"
-//       initial={{ y: -100 }}
-//       animate={{ y: 0 }}
-//       transition={{ duration: 0.5 }}
-//     >
-//       <div className="nav-container">
-//         <motion.div
-//           className="logo"
-//           whileHover={{ scale: 1.05 }}
-//           whileTap={{ scale: 0.95 }}
-//         >
-//           <NavLink to="/" className="logo-link">
-//             <span className="logo-text">AYUSHMAN</span>
-//             <span className="logo-gold">SINGH</span>
-//           </NavLink>
-//         </motion.div>
-
-//         <div className="nav-links">
-//           {navItems.map((item) => (
-//             <NavLink
-//               key={item.path}
-//               to={item.path}
-//               className={({ isActive }) =>
-//                 `nav-link ${isActive ? "active" : ""}`
-//               }
-//             >
-//               <motion.div
-//                 whileHover={{ scale: 1.1 }}
-//                 whileTap={{ scale: 0.95 }}
-//                 className="nav-item-content"
-//               >
-//                 {item.icon}
-//                 <span>{item.label}</span>
-//               </motion.div>
-//               <div className="nav-indicator" />
-//             </NavLink>
-//           ))}
-//         </div>
-
-//         <button className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>
-//           {isOpen ? <X /> : <Menu />}
-//         </button>
-
-//         {isOpen && (
-//           <motion.div
-//             className="mobile-menu"
-//             initial={{ opacity: 0, y: -20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             exit={{ opacity: 0, y: -20 }}
-//           >
-//             {navItems.map((item) => (
-//               <NavLink
-//                 key={item.path}
-//                 to={item.path}
-//                 className={({ isActive }) =>
-//                   `mobile-nav-link ${isActive ? "active" : ""}`
-//                 }
-//                 onClick={() => setIsOpen(false)}
-//               >
-//                 {item.icon}
-//                 <span>{item.label}</span>
-//               </NavLink>
-//             ))}
-//           </motion.div>
-//         )}
-//       </div>
-//     </motion.nav>
-//   );
-// };
-
-// export default Navbar;
