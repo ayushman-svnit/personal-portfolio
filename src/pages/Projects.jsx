@@ -6,6 +6,7 @@ import {
   Code2,
   Server,
   Database,
+  TrendingUp,
   Globe,
   Award,
 } from "lucide-react";
