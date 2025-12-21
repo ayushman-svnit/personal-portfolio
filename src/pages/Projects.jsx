@@ -14,6 +14,34 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
+      title: "Surat House Price Predictor",
+      description:
+        "AI-powered real estate valuation — predicting accurate property prices in Surat",
+      longDescription:
+        "A machine learning–based web application that predicts house prices in Surat using historical property data, advanced data cleaning, feature engineering, and regression models. The platform provides instant price estimates through an intuitive frontend backed by a robust ML-driven API.",
+      features: [
+        "Accurate house price prediction using trained ML regression models",
+        "Extensive data cleaning and feature engineering on real-world real estate data",
+        "Support for key property parameters like location, BHK, area, furnishing, and transaction type",
+        "FastAPI-based backend for real-time predictions",
+        "Interactive React frontend for seamless user experience",
+      ],
+      tech: [
+        "Python",
+        "Scikit-learn",
+        "FastAPI",
+        "React.js (Vite)",
+        "Pandas",
+        "Numpy",
+        "CatBoost",
+      ],
+      github: "https://github.com/ayushman-svnit/surat-house-price-predictor",
+      demo: "https://surat-house-price-predictor.vercel.app/",
+      status: "Completed",
+      icon: <TrendingUp />,
+    },
+    {
+      id: 2,
       title: "TransitFlow",
       description:
         "Revolutionizing Urban Mobility - Seamless transportation solutions for campuses and cities",
@@ -39,7 +67,7 @@ const Projects = () => {
       icon: <Award />,
     },
     {
-      id: 2,
+      id: 3,
       title: "ExamMaster",
       description:
         "JEE Advanced Mock Test Platform with comprehensive analytics and learning resources",
@@ -66,7 +94,7 @@ const Projects = () => {
       icon: <Award />,
     },
     {
-      id: 3,
+      id: 4,
       title: "Portfolio Website",
       description:
         "Personal portfolio website showcasing skills, projects, and achievements",
@@ -85,7 +113,7 @@ const Projects = () => {
       icon: <Globe />,
     },
     {
-      id: 4,
+      id: 5,
       title: "Flight Booking System",
       description:
         "A seamless platform for users and administrators to interact with flight services efficiently.",
